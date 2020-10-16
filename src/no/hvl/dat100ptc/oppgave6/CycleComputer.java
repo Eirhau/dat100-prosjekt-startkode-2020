@@ -14,16 +14,16 @@ public class CycleComputer extends EasyGraphics {
 
 	private static int SPACE = 10;
 	private static int MARGIN = 20;
-	
+
 	// FIXME: take into account number of measurements / gps points
-	private static int ROUTEMAPXSIZE = 800; 
+	private static int ROUTEMAPXSIZE = 800;
 	private static int ROUTEMAPYSIZE = 400;
 	private static int HEIGHTSIZE = 200;
 	private static int TEXTWIDTH = 200;
 
 	private GPSComputer gpscomp;
 	private GPSPoint[] gpspoints;
-	
+
 	private int N = 0;
 
 	private double minlon, minlat, maxlon, maxlat;
@@ -56,15 +56,12 @@ public class CycleComputer extends EasyGraphics {
 		xstep = xstep();
 		ystep = ystep();
 
-		makeWindow("Cycle Computer", 
-				2 * MARGIN + ROUTEMAPXSIZE,
-				2 * MARGIN + ROUTEMAPYSIZE + HEIGHTSIZE + SPACE);
+		makeWindow("Cycle Computer", 2 * MARGIN + ROUTEMAPXSIZE, 2 * MARGIN + ROUTEMAPYSIZE + HEIGHTSIZE + SPACE);
 
 		bikeRoute();
 
 	}
 
-	
 	public void bikeRoute() {
 
 		throw new UnsupportedOperationException(TODO.method());
@@ -80,5 +77,28 @@ public class CycleComputer extends EasyGraphics {
 
 		throw new UnsupportedOperationException(TODO.method());
 	}
-
+	//Returnerer stigning i prosent
+	public static double[] climbs(GPSPoint[] points) {
+		double[] climbs = new double[points.length-1];
+		//Høydemeter/distansen
+		double elevation1, elevation2, distance;
+		
+		for(int i = 1 ; i < points.length ; i++) {
+			elevation1 = points[i-1].getElevation();
+			elevation2 = points[i].getElevation();
+			distance = GPSUtils.distance(points[i-1], points[i]);
+			climbs[i-1] = ((elevation2-elevation1)/distance)*100.0;
+		}
+		
+		return climbs;
+	}
+	public double maxClimb(double[] climbs) {
+		double max=0;
+		for (double i : climbs) {
+			if (i > max) {
+				max = i;
+			}
+		}
+		return max;
+	}
 }

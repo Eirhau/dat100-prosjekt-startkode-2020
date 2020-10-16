@@ -5,61 +5,59 @@ import no.hvl.dat100ptc.TODO;
 public class GPSPoint {
 
 	// TODO - objektvariable
+	private int TIME;
+	private double LATITUDE;
+	private double LONGITUDE;
+	private double ELEVATION;
 		
 	public GPSPoint(int time, double latitude, double longitude, double elevation) {
 
 		// TODO - konstruktur
+		TIME = time;
+		LATITUDE = latitude;
+		LONGITUDE = longitude;
+		ELEVATION=elevation;
 
-		throw new UnsupportedOperationException(TODO.construtor("GPSPoint"));
 
 	}
 
 	// TODO - get/set metoder
 	public int getTime() {
-		
-		throw new UnsupportedOperationException(TODO.method());
+		return TIME;
 		
 	}
 
 	public void setTime(int time) {
-				
-		throw new UnsupportedOperationException(TODO.method());
-
+		TIME = time;
+		
 	}
 
 	public double getLatitude() {
-		
-		throw new UnsupportedOperationException(TODO.method());
+		return LATITUDE;
 		
 	}
 
 	public void setLatitude(double latitude) {
-		
-		throw new UnsupportedOperationException(TODO.method());
+		LATITUDE = latitude;
 		
 	}
 
 	public double getLongitude() {
-		
-		throw new UnsupportedOperationException(TODO.method());
+		return LONGITUDE;
 		
 	}
 
 	public void setLongitude(double longitude) {
-		
-		throw new UnsupportedOperationException(TODO.method());
+		LONGITUDE = longitude;
 		
 	}
 
 	public double getElevation() {
-		
-		throw new UnsupportedOperationException(TODO.method());
-		
+		return ELEVATION;
 	}
 
 	public void setElevation(double elevation) {
-		
-		throw new UnsupportedOperationException(TODO.method());
+		ELEVATION= elevation;
 		
 	}
 	
@@ -69,8 +67,9 @@ public class GPSPoint {
 		
 		// TODO - start
 
-		throw new UnsupportedOperationException(TODO.method());
-
+		str = (TIME + " (" + LATITUDE+","+ LONGITUDE+") "+ ELEVATION + "\n");
+		
+		return str;
 		// TODO - slutt
 		
 	}
